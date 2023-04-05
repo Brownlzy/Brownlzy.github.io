@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-32x32.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.ico">
+  <link rel="mask-icon" href="/images/favicon-32x32.ico" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"brownlzy.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="服务器歌单教程要使用此功能，您必须在综音APP内登录！ 目前账号可通过在吐个槽中发送您通过用户名生成的注册码，由管理员手动为你注册。 本教程使用的版本为：3.3.2 配置APP内服务器设置首先前往设置页，找到服务器配置设置项：  点开后在服务链接处填入提供的服务端URL，然后点击右边的小对勾检查用户在服务器中的注册情况（如下图），如未注册，则会显示邀请码填写框，服务端会根据输入的邀请码为你注册用户">
+<meta property="og:type" content="article">
+<meta property="og:title" content="综音服务器歌单使用教程">
+<meta property="og:url" content="https://brownlzy.github.io/2023/04/05/apphelp/index.html">
+<meta property="og:site_name" content="Brownlzy&#39;s Blog">
+<meta property="og:description" content="服务器歌单教程要使用此功能，您必须在综音APP内登录！ 目前账号可通过在吐个槽中发送您通过用户名生成的注册码，由管理员手动为你注册。 本教程使用的版本为：3.3.2 配置APP内服务器设置首先前往设置页，找到服务器配置设置项：  点开后在服务链接处填入提供的服务端URL，然后点击右边的小对勾检查用户在服务器中的注册情况（如下图），如未注册，则会显示邀请码填写框，服务端会根据输入的邀请码为你注册用户">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://brownlzy.github.io/MyOtaInfo/MusicPlayer/image/abd1994da42c5e9e5573e6fab42203c8.jpg">
+<meta property="og:image" content="https://brownlzy.github.io/MyOtaInfo/MusicPlayer/image/fb4200adb89a4d8b53f89861056ec128.jpg">
+<meta property="og:image" content="https://brownlzy.github.io/MyOtaInfo/MusicPlayer/image/7c87a114596f3473bf24bf1f3b4a3fac.jpg">
+<meta property="og:image" content="https://brownlzy.github.io/MyOtaInfo/MusicPlayer/image/765abf3c496e14010ddbfe32f32a3897.jpg">
+<meta property="og:image" content="https://brownlzy.github.io/MyOtaInfo/MusicPlayer/image/20a2ee84ac6ec61aadc1e6c58496842c.jpg">
+<meta property="og:image" content="https://brownlzy.github.io/MyOtaInfo/MusicPlayer/image/5fc07a6ffbc7496d0a0a7366afead4fb.jpg">
+<meta property="og:image" content="https://brownlzy.github.io/MyOtaInfo/MusicPlayer/image/92b8839cc024286dd180bd34ec192625.jpg">
+<meta property="og:image" content="https://brownlzy.github.io/MyOtaInfo/MusicPlayer/image/8eabe41f300da5d5a043e2e516d399e3.jpg">
+<meta property="og:image" content="https://brownlzy.github.io/MyOtaInfo/MusicPlayer/image/b06b9dcefe5d65496c6b9f46144b2afd.jpg">
+<meta property="og:image" content="https://brownlzy.github.io/MyOtaInfo/MusicPlayer/image/db404a24e3c36fd558ce8f3d3f525d50.jpg">
+<meta property="og:image" content="https://brownlzy.github.io/MyOtaInfo/MusicPlayer/image/8be3e5873e369722fd1b61bfb41cf251.jpg">
+<meta property="og:image" content="https://brownlzy.github.io/MyOtaInfo/MusicPlayer/image/4d4a563fcd47a59fdc86b8029493cddd.jpg">
+<meta property="og:image" content="https://brownlzy.github.io/MyOtaInfo/MusicPlayer/image/104666be0bbc43e22b06cf18e498a03b.jpg">
+<meta property="article:published_time" content="2023-04-05T12:06:50.000Z">
+<meta property="article:modified_time" content="2023-04-05T12:52:42.066Z">
+<meta property="article:author" content="Harry Liu">
+<meta property="article:tag" content="综音">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://brownlzy.github.io/MyOtaInfo/MusicPlayer/image/abd1994da42c5e9e5573e6fab42203c8.jpg">
+
+<link rel="canonical" href="https://brownlzy.github.io/2023/04/05/apphelp/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>综音服务器歌单使用教程 | Brownlzy's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Brownlzy's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">A Brown Cat Don't Eat Food</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/Brownlzy" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://brownlzy.github.io/2023/04/05/apphelp/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/Brown.jpg">
+      <meta itemprop="name" content="Harry Liu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Brownlzy's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          综音服务器歌单使用教程
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2023-04-05 20:06:50 / 修改时间：20:52:42" itemprop="dateCreated datePublished" datetime="2023-04-05T20:06:50+08:00">2023-04-05</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%99%E7%A8%8B/" itemprop="url" rel="index"><span itemprop="name">教程</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>703</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="服务器歌单教程"><a href="#服务器歌单教程" class="headerlink" title="服务器歌单教程"></a>服务器歌单教程</h1><p><strong>要使用此功能，您必须在综音APP内登录！</strong></p>
+<p>目前账号可通过在吐个槽中发送您通过用户名生成的注册码，由管理员手动为你注册。</p>
+<p>本教程使用的版本为：<code>3.3.2</code></p>
+<h2 id="配置APP内服务器设置"><a href="#配置APP内服务器设置" class="headerlink" title="配置APP内服务器设置"></a>配置APP内服务器设置</h2><p>首先前往设置页，找到服务器配置设置项：</p>
+<p><img src="/MyOtaInfo/MusicPlayer/image/abd1994da42c5e9e5573e6fab42203c8.jpg" alt="abd1994da42c5e9e5573e6fab42203c8.jpg"><img src="/MyOtaInfo/MusicPlayer/image/fb4200adb89a4d8b53f89861056ec128.jpg" alt="fb4200adb89a4d8b53f89861056ec128.jpg"></p>
+<p>点开后在服务链接处填入提供的服务端URL，然后点击右边的小对勾检查用户在服务器中的注册情况（如下图），如未注册，则会显示邀请码填写框，服务端会根据输入的邀请码为你注册用户并确定用户等级（一般管理员权限需要6位数邀请码，普通用户需要4位邀请码）</p>
+<p><img src="/MyOtaInfo/MusicPlayer/image/7c87a114596f3473bf24bf1f3b4a3fac.jpg" alt="7c87a114596f3473bf24bf1f3b4a3fac.jpg"><img src="/MyOtaInfo/MusicPlayer/image/765abf3c496e14010ddbfe32f32a3897.jpg" alt="765abf3c496e14010ddbfe32f32a3897.jpg"></p>
+<p>此处以管理员邀请码为例，填写邀请码后点击右侧对勾进行注册，若注册成功，则可以看到许可级别一栏显示对应的权限等级，然后点击登录，服务器一栏出现配置信息后即登录成功：</p>
+<p><img src="/MyOtaInfo/MusicPlayer/image/20a2ee84ac6ec61aadc1e6c58496842c.jpg" alt="20a2ee84ac6ec61aadc1e6c58496842c.jpg"><img src="/MyOtaInfo/MusicPlayer/image/5fc07a6ffbc7496d0a0a7366afead4fb.jpg" alt="5fc07a6ffbc7496d0a0a7366afead4fb.jpg"></p>
+<p>勾选“使用在线服务器”，App将为您加载服务器中的歌单，回到曲库列表可以看到新增的列表。其中所有歌曲（admin）默认出现在所有管理员的歌单列表中，括号内为该歌单的创建用户，管理员具有管理其他歌单的权限，普通用户只能修改由其自行创建的歌单。</p>
+<p><img src="/MyOtaInfo/MusicPlayer/image/92b8839cc024286dd180bd34ec192625.jpg" alt="92b8839cc024286dd180bd34ec192625.jpg"></p>
+<h2 id="向歌单中上传歌曲"><a href="#向歌单中上传歌曲" class="headerlink" title="向歌单中上传歌曲"></a>向歌单中上传歌曲</h2><p>目前用户可以从其他歌单中上传本地歌曲至云歌单，方法如下：</p>
+<p>首先准备一个内有本地音乐的普通歌单或文件夹歌单，在歌单内点击一首本地歌曲的更多按钮，选择添加到歌单，再选中想加入的歌单，然后确定。</p>
+<p><img src="/MyOtaInfo/MusicPlayer/image/8eabe41f300da5d5a043e2e516d399e3.jpg" alt="8eabe41f300da5d5a043e2e516d399e3.jpg"><img src="/MyOtaInfo/MusicPlayer/image/b06b9dcefe5d65496c6b9f46144b2afd.jpg" alt="b06b9dcefe5d65496c6b9f46144b2afd.jpg"></p>
+<p>弹出成功提示后，可前往设置页-传输列表查看上传任务状态。</p>
+<p><img src="/MyOtaInfo/MusicPlayer/image/db404a24e3c36fd558ce8f3d3f525d50.jpg" alt="db404a24e3c36fd558ce8f3d3f525d50.jpg"></p>
+<p>此时回到歌单刷新，可以看到新上传的歌曲：</p>
+<p><img src="/MyOtaInfo/MusicPlayer/image/8be3e5873e369722fd1b61bfb41cf251.jpg" alt="8be3e5873e369722fd1b61bfb41cf251.jpg"></p>
+<h2 id="歌单分享功能"><a href="#歌单分享功能" class="headerlink" title="歌单分享功能"></a>歌单分享功能</h2><p>您可以通过歌单分享功能将此歌单分享给位于同一服务器的用户<strong>（目前无法取消授权）</strong>，该用户可以收到您歌单的实时更新。在歌单列表选中“更多”-“分享”，将二维码展示给要分享的朋友，对方通过曲库歌单列表顶栏的二维码扫描功能即可成功添加到曲库。</p>
+<p><img src="/MyOtaInfo/MusicPlayer/image/4d4a563fcd47a59fdc86b8029493cddd.jpg" alt="4d4a563fcd47a59fdc86b8029493cddd.jpg"><img src="/MyOtaInfo/MusicPlayer/image/104666be0bbc43e22b06cf18e498a03b.jpg" alt="104666be0bbc43e22b06cf18e498a03b.jpg"></p>
+
+    </div>
+
+    
+    
+    
+      
+  <div class="popular-posts-header">相关文章</div>
+  <ul class="popular-posts">
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="\2023\04\05\serverhelp\" rel="bookmark">综音服务器配置教程</a></div>
+    </li>
+  </ul>
+
+        <div class="reward-container">
+  <div>愿不愿意支持我一下？</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.png" alt="Harry Liu 微信支付">
+        <p>微信支付</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Harry Liu
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://brownlzy.github.io/2023/04/05/apphelp/" title="综音服务器歌单使用教程">https://brownlzy.github.io/2023/04/05/apphelp/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%BB%BC%E9%9F%B3/" rel="tag"># 综音</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/04/05/serverhelp/" rel="prev" title="综音服务器配置教程">
+      <i class="fa fa-chevron-left"></i> 综音服务器配置教程
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2023/04/05/reseum/" rel="next" title="个人简历">
+      个人简历 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%AD%8C%E5%8D%95%E6%95%99%E7%A8%8B"><span class="nav-number">1.</span> <span class="nav-text">服务器歌单教程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AEAPP%E5%86%85%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%AE%BE%E7%BD%AE"><span class="nav-number">1.1.</span> <span class="nav-text">配置APP内服务器设置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%91%E6%AD%8C%E5%8D%95%E4%B8%AD%E4%B8%8A%E4%BC%A0%E6%AD%8C%E6%9B%B2"><span class="nav-number">1.2.</span> <span class="nav-text">向歌单中上传歌曲</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AD%8C%E5%8D%95%E5%88%86%E4%BA%AB%E5%8A%9F%E8%83%BD"><span class="nav-number">1.3.</span> <span class="nav-text">歌单分享功能</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Harry Liu"
+      src="/images/Brown.jpg">
+  <p class="site-author-name" itemprop="name">Harry Liu</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">9</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Brownlzy" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Brownlzy" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=1LiureL65uyUpaX6t7u5" title="E-Mail → http:&#x2F;&#x2F;mail.qq.com&#x2F;cgi-bin&#x2F;qm_share?t&#x3D;qm_mailme&amp;email&#x3D;1LiureL65uyUpaX6t7u5" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://plus.google.com/lzy26534" title="Google → https:&#x2F;&#x2F;plus.google.com&#x2F;lzy26534" rel="noopener" target="_blank"><i class="fab fa-google fa-fw"></i>Google</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/Brownlzys" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;Brownlzys" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://15179819717.github.io/" title="https:&#x2F;&#x2F;15179819717.github.io&#x2F;" rel="noopener" target="_blank">wzk's_blog</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fab fa-chrome"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Harry Liu</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">531k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">8:03</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+<script>
+document.querySelectorAll('.pdfobject-container').forEach(element => {
+  let url = element.dataset.target;
+  let pdfOpenParams = {
+    navpanes : 0,
+    toolbar  : 0,
+    statusbar: 0,
+    pagemode : 'thumbs',
+    view     : 'FitH'
+  };
+  let pdfOpenFragment = '#' + Object.entries(pdfOpenParams).map(([key, value]) => `${key}=${encodeURIComponent(value)}`).join('&');
+  let fullURL = `/lib/pdf/web/viewer.html?file=${encodeURIComponent(url)}${pdfOpenFragment}`;
+
+  if (NexT.utils.supportsPDFs()) {
+    element.innerHTML = `<embed class="pdfobject" src="${url + pdfOpenFragment}" type="application/pdf" style="height: ${element.dataset.height};">`;
+  } else {
+    element.innerHTML = `<iframe src="${fullURL}" style="height: ${element.dataset.height};" frameborder="0"></iframe>`;
+  }
+});
+</script>
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

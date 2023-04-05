@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-32x32.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.ico">
+  <link rel="mask-icon" href="/images/favicon-32x32.ico" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"brownlzy.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="服务器配置教程首先需要准备好最新版综音服务端程序，程序可在官网下载。 本教程使用的版本为：1.1.4 服务端的搭建准备服务端程序工作环境服务端程序由Java编写，支持Windows、Linux、Mac系统，推荐Java版本为Java11以上。关于Java环境的配置可参考知乎文章Java基础篇——环境配置，本教程以Windows11+Java17为例。 配置服务端下载服务端文件BrownMusicS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="综音服务器配置教程">
+<meta property="og:url" content="https://brownlzy.github.io/2023/04/05/serverhelp/index.html">
+<meta property="og:site_name" content="Brownlzy&#39;s Blog">
+<meta property="og:description" content="服务器配置教程首先需要准备好最新版综音服务端程序，程序可在官网下载。 本教程使用的版本为：1.1.4 服务端的搭建准备服务端程序工作环境服务端程序由Java编写，支持Windows、Linux、Mac系统，推荐Java版本为Java11以上。关于Java环境的配置可参考知乎文章Java基础篇——环境配置，本教程以Windows11+Java17为例。 配置服务端下载服务端文件BrownMusicS">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://brownlzy.github.io/MyOtaInfo/MusicPlayer/image/773cfcd201d4075e6f70bf8161253e47.png">
+<meta property="og:image" content="https://brownlzy.github.io/MyOtaInfo/MusicPlayer/image/55e3a0bced21be2429b4e3f1a6817a8c.png">
+<meta property="og:image" content="https://brownlzy.github.io/MyOtaInfo/MusicPlayer/image/3d7270008d5d16fc3153128b162e2b16.png">
+<meta property="og:image" content="https://brownlzy.github.io/MyOtaInfo/MusicPlayer/image/5eb6dc4fc0f415a88d9e562fbc77bbbb.png">
+<meta property="og:image" content="https://brownlzy.github.io/MyOtaInfo/MusicPlayer/image/291d4b0827a377fb1f42185bf4d7652a.png">
+<meta property="og:image" content="https://brownlzy.github.io/MyOtaInfo/MusicPlayer/image/54883268d7eb54a624a0261a68f62402.png">
+<meta property="og:image" content="https://brownlzy.github.io/MyOtaInfo/MusicPlayer/image/b3b21eaa291a337ab60432c5a17abc0c.png">
+<meta property="og:image" content="https://brownlzy.github.io/MyOtaInfo/MusicPlayer/image/1f843fb6001eabb4bd65d0e0c69be934.png">
+<meta property="article:published_time" content="2023-04-05T12:04:08.000Z">
+<meta property="article:modified_time" content="2023-04-05T12:52:44.896Z">
+<meta property="article:author" content="Harry Liu">
+<meta property="article:tag" content="综音">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://brownlzy.github.io/MyOtaInfo/MusicPlayer/image/773cfcd201d4075e6f70bf8161253e47.png">
+
+<link rel="canonical" href="https://brownlzy.github.io/2023/04/05/serverhelp/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>综音服务器配置教程 | Brownlzy's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Brownlzy's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">A Brown Cat Don't Eat Food</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/Brownlzy" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://brownlzy.github.io/2023/04/05/serverhelp/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/Brown.jpg">
+      <meta itemprop="name" content="Harry Liu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Brownlzy's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          综音服务器配置教程
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2023-04-05 20:04:08 / 修改时间：20:52:44" itemprop="dateCreated datePublished" datetime="2023-04-05T20:04:08+08:00">2023-04-05</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%99%E7%A8%8B/" itemprop="url" rel="index"><span itemprop="name">教程</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="服务器配置教程"><a href="#服务器配置教程" class="headerlink" title="服务器配置教程"></a>服务器配置教程</h1><p>首先需要准备好最新版<strong>综音服务端程序</strong>，程序可在<a href="https://brownlzy.github.io/MyOtaInfo/MusicPlayer/">官网</a>下载。</p>
+<p>本教程使用的版本为：<code>1.1.4</code></p>
+<h2 id="服务端的搭建"><a href="#服务端的搭建" class="headerlink" title="服务端的搭建"></a>服务端的搭建</h2><h3 id="准备服务端程序工作环境"><a href="#准备服务端程序工作环境" class="headerlink" title="准备服务端程序工作环境"></a>准备服务端程序工作环境</h3><p>服务端程序由Java编写，支持Windows、Linux、Mac系统，推荐Java版本为Java11以上。关于Java环境的配置可参考知乎文章<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/107859108">Java基础篇——环境配置</a>，本教程以Windows11+Java17为例。</p>
+<h3 id="配置服务端"><a href="#配置服务端" class="headerlink" title="配置服务端"></a>配置服务端</h3><p>下载服务端文件BrownMusicServer_1.1.4.jar，将它放在一个不含中文的路径下（如：D:\Brownlzy\MusicServer），如图所示：</p>
+<p><img src="/MyOtaInfo/MusicPlayer/image/773cfcd201d4075e6f70bf8161253e47.png" alt="773cfcd201d4075e6f70bf8161253e47.png"></p>
+<p>在该文件夹下，新建一个txt文本文件命名为start.txt和一个文件夹并命名为Music：</p>
+<p><img src="/MyOtaInfo/MusicPlayer/image/55e3a0bced21be2429b4e3f1a6817a8c.png" alt="55e3a0bced21be2429b4e3f1a6817a8c.png"></p>
+<p>打开新建好的start.txt并输入以下命令：</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -jar 程序文件名 -h IP地址 -p 端口号 -r 音乐文件夹 -w --cors=*</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意：</strong> 程序文件名需要视情况修改；本机IP可通过系统设置-网络-属性中的IPv4一栏找到，或者输入Win+R，在弹出窗口中输入cmd后回车，并在打开的黑色窗口中输入ipconfig后再回车，在出现的信息中找到IPv4：</p>
+<p><img src="/MyOtaInfo/MusicPlayer/image/3d7270008d5d16fc3153128b162e2b16.png" alt="3d7270008d5d16fc3153128b162e2b16.png"></p>
+<p>获得；端口号部分可整体替换为<code>80 -hp</code>或<code>1024</code>-<code>65536</code>中的任意可用<strong>整数</strong>，如果启动失败可用多试几个；音乐存放位置在本教程中可以填写完整位置D:\Brownlzy\MusicServer\Music或相对位置Music，注意，若路径中含空格则需要用英文双引号将路径括起来。更多参数可以使用 <code>java -jar BrownMusicServer_1.1.4.jar --help</code> 查看。</p>
+<p>按照上面的规则，确定了最终内容为</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -jar BrownMusicServer\_1.<span class="number">1</span>.<span class="number">4</span>.jar -h <span class="number">192</span>.<span class="number">168</span>.<span class="number">3</span>.<span class="number">4</span> -p <span class="number">80</span> -hp -r Music -w --cors=*</span><br></pre></td></tr></table></figure>
+
+<p>保存好后重命名为<code>start.bat</code>。</p>
+<h3 id="启动服务器程序"><a href="#启动服务器程序" class="headerlink" title="启动服务器程序"></a>启动服务器程序</h3><p>双击文件<code>start.bat</code>：</p>
+<p><img src="/MyOtaInfo/MusicPlayer/image/5eb6dc4fc0f415a88d9e562fbc77bbbb.png" alt="5eb6dc4fc0f415a88d9e562fbc77bbbb.png"></p>
+<p>看到如图所示内容则说明运行成功，其中展示了几个重要信息：</p>
+<p>本次运行的<strong>管理员注册码</strong>为<code>299018</code>，<strong>普通用户注册码</strong>为<code>6244</code>，服务器<strong>Web网页链接</strong>为 <code>http://192.168.3.4/</code></p>
+<h2 id="服务端的使用"><a href="#服务端的使用" class="headerlink" title="服务端的使用"></a>服务端的使用</h2><p>首先在浏览器中打开所给链接：</p>
+<p><img src="/MyOtaInfo/MusicPlayer/image/291d4b0827a377fb1f42185bf4d7652a.png" alt="291d4b0827a377fb1f42185bf4d7652a.png"></p>
+<p>账号密码见App服务端配置登录成功后的二维码下方。</p>
+<p>登录成功后可见</p>
+<p><img src="/MyOtaInfo/MusicPlayer/image/54883268d7eb54a624a0261a68f62402.png" alt="54883268d7eb54a624a0261a68f62402.png"></p>
+<p>看到此窗口则说明web端可以正常使用，你可以在此页面上传常见歌曲文件和lrc歌词文件，或者手动向前文Music文件夹中添加文件：</p>
+<p><img src="/MyOtaInfo/MusicPlayer/image/b3b21eaa291a337ab60432c5a17abc0c.png" alt="b3b21eaa291a337ab60432c5a17abc0c.png"></p>
+<p>然后并点击网页中的扫描音乐目录按钮即可使用web端听歌。</p>
+<p><img src="/MyOtaInfo/MusicPlayer/image/1f843fb6001eabb4bd65d0e0c69be934.png" alt="1f843fb6001eabb4bd65d0e0c69be934.png"></p>
+
+    </div>
+
+    
+    
+    
+      
+  <div class="popular-posts-header">相关文章</div>
+  <ul class="popular-posts">
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="\2023\04\05\apphelp\" rel="bookmark">综音服务器歌单使用教程</a></div>
+    </li>
+  </ul>
+
+        <div class="reward-container">
+  <div>愿不愿意支持我一下？</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.png" alt="Harry Liu 微信支付">
+        <p>微信支付</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Harry Liu
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://brownlzy.github.io/2023/04/05/serverhelp/" title="综音服务器配置教程">https://brownlzy.github.io/2023/04/05/serverhelp/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%BB%BC%E9%9F%B3/" rel="tag"># 综音</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/07/02/DinoOL/" rel="prev" title="DinoOL帮助文档">
+      <i class="fa fa-chevron-left"></i> DinoOL帮助文档
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2023/04/05/apphelp/" rel="next" title="综音服务器歌单使用教程">
+      综音服务器歌单使用教程 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B"><span class="nav-number">1.</span> <span class="nav-text">服务器配置教程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E7%AB%AF%E7%9A%84%E6%90%AD%E5%BB%BA"><span class="nav-number">1.1.</span> <span class="nav-text">服务端的搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%86%E5%A4%87%E6%9C%8D%E5%8A%A1%E7%AB%AF%E7%A8%8B%E5%BA%8F%E5%B7%A5%E4%BD%9C%E7%8E%AF%E5%A2%83"><span class="nav-number">1.1.1.</span> <span class="nav-text">准备服务端程序工作环境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E6%9C%8D%E5%8A%A1%E7%AB%AF"><span class="nav-number">1.1.2.</span> <span class="nav-text">配置服务端</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%AF%E5%8A%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%A8%8B%E5%BA%8F"><span class="nav-number">1.1.3.</span> <span class="nav-text">启动服务器程序</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E7%AB%AF%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-number">1.2.</span> <span class="nav-text">服务端的使用</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Harry Liu"
+      src="/images/Brown.jpg">
+  <p class="site-author-name" itemprop="name">Harry Liu</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">9</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Brownlzy" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Brownlzy" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=1LiureL65uyUpaX6t7u5" title="E-Mail → http:&#x2F;&#x2F;mail.qq.com&#x2F;cgi-bin&#x2F;qm_share?t&#x3D;qm_mailme&amp;email&#x3D;1LiureL65uyUpaX6t7u5" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://plus.google.com/lzy26534" title="Google → https:&#x2F;&#x2F;plus.google.com&#x2F;lzy26534" rel="noopener" target="_blank"><i class="fab fa-google fa-fw"></i>Google</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/Brownlzys" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;Brownlzys" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://15179819717.github.io/" title="https:&#x2F;&#x2F;15179819717.github.io&#x2F;" rel="noopener" target="_blank">wzk's_blog</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fab fa-chrome"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Harry Liu</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">531k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">8:03</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+<script>
+document.querySelectorAll('.pdfobject-container').forEach(element => {
+  let url = element.dataset.target;
+  let pdfOpenParams = {
+    navpanes : 0,
+    toolbar  : 0,
+    statusbar: 0,
+    pagemode : 'thumbs',
+    view     : 'FitH'
+  };
+  let pdfOpenFragment = '#' + Object.entries(pdfOpenParams).map(([key, value]) => `${key}=${encodeURIComponent(value)}`).join('&');
+  let fullURL = `/lib/pdf/web/viewer.html?file=${encodeURIComponent(url)}${pdfOpenFragment}`;
+
+  if (NexT.utils.supportsPDFs()) {
+    element.innerHTML = `<embed class="pdfobject" src="${url + pdfOpenFragment}" type="application/pdf" style="height: ${element.dataset.height};">`;
+  } else {
+    element.innerHTML = `<iframe src="${fullURL}" style="height: ${element.dataset.height};" frameborder="0"></iframe>`;
+  }
+});
+</script>
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
